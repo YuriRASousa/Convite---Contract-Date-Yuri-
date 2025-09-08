@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Convite - Contract Date (Yuri)</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container" role="main">
+        <header>
+            <div class="logo-spot">Y</div>
+            <div class="title">
+                <h1>Convite Formal — "Contrato de Locação de Um Date"</h1>
+                <p>Proposto por: Yuri · Data: 13/09/2025 · Local: Shopping Morumbi e entorno</p>
+            </div>
+            <div class="stamp" aria-hidden="true"></div>
+        </header>
+
+        <section class="contract" aria-labelledby="contractTitle">
+            <h2 id="contractTitle">Cláusulas & Termos — Test Dive do Produto "Yuri"</h2>
+
+            <div class="clause">
+                <h3>Objeto</h3>
+                <p>O presente "Contrato" tem por objeto a realização de um date cuidadosamente planejado, com atividades
+                    de lazer, cinema e jantar, com o único propósito de testar o produto experimental "Yuri". Ao
+                    aceitar, você declara-se curiosa e disponível para a experiência.</p>
+            </div>
+
+            <div class="clause">
+                <h3>Condições</h3>
+                <p>Será seguida a programação abaixo, com carinho, boas risadas e sobremesa ao final. Qualquer alteração
+                    será motivo para mais cumplicidade.</p>
+            </div>
+
+            <div class="itinerary">
+                <div class="steps">
+                    <div class="step">
+                        <div class="num">1</div>
+                        <div class="info">
+                            <strong>Passeio no Shopping Morumbi</strong>
+                            <small>Vamos passear, olhar vitrines, tomar um sorvete.</small>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="num">2</div>
+                        <div class="info">
+                            <strong>Cinema no Marketplace ao lado do shopping</strong>
+                            <small>Escolheremos um filme entre as opções abaixo (clique no poster que preferir).</small>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <div class="num">3</div>
+                        <div class="info">
+                            <strong>Jantar no Abbraccio</strong>
+                            <small>Massas, vinho e muita conversa para fechar a noite com chave de ouro.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="banner-area" aria-label="Escolha do Filme">
+                    <p>Selecione o filme (basta clicar no poster).</p>
+                    <div class="banners">
+                        <div class="banner-wrapper" id="wrapper1" onclick="selectBanner(1)" tabindex="0" role="button">
+                            <div class="banner">
+                                <img src="img/film1.webp" alt="Poster Invocação do Mal">
+                            </div>
+                            <span class="label">Opção A</span>
+                        </div>
+
+                        <div class="banner-wrapper" id="wrapper2" onclick="selectBanner(2)" tabindex="0" role="button">
+                            <div class="banner">
+                                <img src="img/film2.webp" alt="Poster Quarteto Fantástico">
+                            </div>
+                            <span class="label">Opção B</span>
+                        </div>
+
+                        <div class="banner-wrapper" id="wrapper3" onclick="selectBanner(3)" tabindex="0" role="button">
+                            <div class="banner">
+                                <img src="img/film3.webp" alt="Poster Os Roses">
+                            </div>
+                            <span class="label">Opção C</span>
+                        </div>
+                    </div>
+
+                    <div class="selection-display">
+                        <small>Filme escolhido:</small>
+                        <strong id="chosen">— nenhum —</strong>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="contract-term">
+                <div class="text">Mensagem: "Você aceitou fazer um test dive do nosso produto Yuri — espero que goste do
+                    nosso serviço."</div>
+                <div style="font-size:13px;color:var(--muted)">Duração estimada: algumas horas (com sobremesa).</div>
+            </div>
+
+            <div class="signature">
+                <div class="sig-box">
+                    <div style="font-size:13px;color:var(--muted)">Declaro que li, gostei e aceito o presente convite.
+                    </div>
+                    <div class="sig-line" id="sigline"></div>
+                    <div style="display:flex; align-items:center; gap:8px; justify-content:space-between">
+                        <div style="font-weight:700">Assinado: <span id="assinado">— sua assinatura —</span></div>
+                        <button class="btn-accept" onclick="acceptContract()">ACEITO</button>
+                    </div>
+                </div>
+
+                <div style="width:240px; text-align:center; font-size:12px; color:var(--muted)">
+                    <div style="font-weight:700; color:var(--accent)">Yuri — Produtor de Experiências</div>
+                    <div style="margin-top:8px">Versão lúdica · Não substitui documentos oficiais</div>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>
+            <div>Observações: traga seu sorriso e disposição para sobremesa 🍰</div>
+            <div>Contato: Yuri</div>
+        </footer>
+    </div>
+
+    <script>
+        let chosen = null;
+
+        function selectBanner(n) {
+            chosen = n;
+            // Atualiza o texto com a opção escolhida
+            document.getElementById('chosen').innerText = ['Opção A', 'Opção B', 'Opção C'][n - 1];
+
+            // Itera por todos os wrappers para adicionar ou remover a classe 'selected'
+            [1, 2, 3].forEach(i => {
+                const el = document.getElementById('wrapper' + i); // Alvo agora é o wrapper
+                if (i === n) {
+                    el.classList.add('selected');
+                } else {
+                    el.classList.remove('selected');
+                }
+            });
+        }
+
+        function acceptContract() {
+            const name = prompt('Assine com seu nome (como prefere ser chamada)') || '';
+            document.getElementById('assinado').innerText = name || '— assinante não identificado —';
+            document.getElementById('sigline').style.background = 'linear-gradient(90deg,var(--accent),#d38fb4)';
+            alert('Perfeito! O convite foi oficialmente aceito.');
+        }
+
+        // Permite a seleção com as teclas Enter ou Espaço para acessibilidade
+        document.querySelectorAll('.banner-wrapper').forEach((b, i) => {
+            b.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault(); // Impede o scroll da página ao usar a barra de espaço
+                    selectBanner(i + 1);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

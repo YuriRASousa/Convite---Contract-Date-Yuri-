@@ -1,0 +1,151 @@
+:root{
+  --bg:#fff7fb;
+  --paper:#fff;
+  --accent:#e86fa8;
+  --muted:#7a7a7a;
+  --border:#f0d9e6;
+  --ink:#3b2b3b;
+  --shadow: 0 8px 24px rgba(59,43,59,0.08);
+  --radius:18px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  background: linear-gradient(180deg, #fffafc 0%, #fff7fb 100%);
+  margin:24px; display:flex; align-items:center; justify-content:center; min-height:100vh; color:var(--ink);
+}
+.container{
+  width:960px; max-width:96%; background:var(--paper); border-radius:20px; padding:26px; box-shadow:var(--shadow); border:1px solid var(--border);
+}
+/* --- NOVA CORREÇÃO DO HEADER --- */
+header{
+  display:flex; 
+  gap:18px; 
+  align-items: flex-start; /* ALTERADO: Alinha os itens no topo para melhor controle */
+}
+.logo-spot{width:84px; height:84px; border-radius:14px; background:linear-gradient(135deg,#ffd6ec,#ffeef8); display:flex; align-items:center; justify-content:center; font-weight:700; color:#7a3052}
+.title{flex:1}
+.title h1{margin:0; font-size:20px; letter-spacing:0.3px}
+.title p{margin:4px 0 0; color:var(--muted); font-size:13px}
+
+.contract{
+  margin-top:18px; border-radius:12px; padding:18px; background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,245,250,0.7)); border:1px dashed rgba(160,120,140,0.12);
+}
+.contract h2{margin:4px 0 12px; font-size:16px; color:var(--accent)}
+.clause{margin-bottom:12px}
+.clause h3{margin:0 0 6px; font-size:14px}
+.clause p{margin:0; color:var(--muted); line-height:1.5}
+
+.itinerary{display:grid; grid-template-columns:1fr 220px; gap:18px; margin-top:18px}
+.itinerary .steps{background:#fff; padding:14px; border-radius:12px; border:1px solid #f4d9e9}
+.step{display:flex; gap:12px; padding:10px 6px; align-items:flex-start}
+.step .num{width:34px; height:34px; border-radius:8px; background:linear-gradient(180deg,#fff, #fff); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent)}
+.step .info{font-size:14px}
+.step .info small{display:block; color:var(--muted); margin-top:6px; font-size:12px}
+
+.banner-area{background:linear-gradient(180deg,#fff7fb,#fff); padding:14px; border-radius:12px; border:1px solid #f6e0ef; grid-column:1/-1}
+.banner-area p{margin:0 0 10px; color:var(--muted)}
+.banners{
+  display:flex; 
+  gap:16px;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+.banner{flex:1; height:180px; border-radius:10px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; border:1px solid rgba(160,120,140,0.06); background:linear-gradient(135deg,#fff,#fff9fb)}
+.banner img{max-height:100%; max-width:100%; object-fit:contain; filter:grayscale(0.02); opacity:0.95}
+
+
+.contract-term{margin-top:16px; display:flex; gap:12px; align-items:center; justify-content:space-between}
+.contract-term .text{color:var(--muted); font-size:13px}
+
+.signature{margin-top:18px; display:flex; gap:18px; align-items:center}
+.sig-box{flex:1; padding:12px; border-radius:10px; border:1px solid #f0d0e4; background:linear-gradient(180deg,#fff,#fffaf8)}
+.sig-line{height:2px; background:linear-gradient(90deg,var(--accent),#d38fb4); margin:12px 0; border-radius:2px}
+.btn-accept{background:linear-gradient(90deg,var(--accent),#d55b94); color:white; padding:10px 14px; border-radius:12px; border:none; cursor:pointer; font-weight:700}
+
+footer{margin-top:20px; display:flex; align-items:center; justify-content:space-between; color:var(--muted); font-size:13px}
+
+/* --- NOVA CORREÇÃO DO CARIMBO --- */
+.stamp {
+  margin-left: auto; /* Empurra o carimbo para a direita */
+  flex-shrink: 0;   /* Impede que o carimbo seja espremido */
+  padding-left: 15px; /* Adiciona um espaço seguro entre o texto e o carimbo */
+  padding-top: 10px;  /* Ajusta a altura do carimbo */
+}
+
+.stamp::after {
+  content: 'CONFIRMADO ❤️';
+  display: inline-block; /* Permite que a transformação funcione corretamente */
+  transform: rotate(-12deg);
+  background: rgba(232, 111, 168, 0.12);
+  color: var(--accent);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 12px;
+  border: 1px solid rgba(232, 111, 168, 0.18);
+}
+
+
+/* --- SEÇÃO DE SELEÇÃO DE FILMES (AJUSTES RESPONSIVOS) --- */
+.banner-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex-grow: 0;
+  flex-basis: 150px;
+}
+.banner-wrapper .label {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+.banner {
+  transition: all 0.2s ease-in-out;
+  border: 2px solid transparent; 
+}
+.banner-wrapper.selected .banner {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px rgba(232, 111, 168, 0.5);
+  transform: scale(1.05);
+}
+.banner-wrapper.selected .label {
+  color: var(--accent);
+  font-weight: 700;
+}
+.selection-display {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--muted);
+  justify-content: center;
+}
+#chosen {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE GERAL --- */
+@media (max-width: 720px){
+  .itinerary{grid-template-columns:1fr;}
+  
+  .banners{
+    flex-direction:column; 
+    align-items:center;
+    gap: 24px;
+  }
+  .banner-wrapper { 
+    width: 70%;
+    max-width: 220px;
+    flex-basis: auto;
+  }
+  .banner{height:auto; aspect-ratio: 2 / 3;}
+  
+  header{gap:10px}
+}
