@@ -18,20 +18,18 @@ body{
   width:960px; max-width:96%; background:var(--paper); border-radius:20px; padding:26px; box-shadow:var(--shadow); border:1px solid var(--border);
 }
 
-/* --- CORREÇÃO DEFINITIVA DO HEADER E CARIMBO --- */
 header{
   display:flex; 
   gap:18px; 
-  align-items: center; /* Alinha o logo e o título verticalmente */
-  position: relative; /* Necessário para o posicionamento do carimbo */
-  padding-right: 120px; /* Cria um espaço VAZIO à direita para o carimbo */
+  align-items: center;
+  position: relative;
+  padding-right: 120px;
 }
 .logo-spot{width:84px; height:84px; border-radius:14px; background:linear-gradient(135deg,#ffd6ec,#ffeef8); display:flex; align-items:center; justify-content:center; font-weight:700; color:#7a3052}
 .title{flex:1}
 .title h1{margin:0; font-size:20px; letter-spacing:0.3px}
 .title p{margin:4px 0 0; color:var(--muted); font-size:13px}
 
-/* Posiciona o carimbo na área vazia criada pelo padding do header */
 .stamp {
   position: absolute;
   top: 15px;
@@ -50,7 +48,6 @@ header{
   font-size: 12px;
   border: 1px solid rgba(232, 111, 168, 0.18);
 }
-/* --- FIM DA CORREÇÃO --- */
 
 .contract{
   margin-top:18px; border-radius:12px; padding:18px; background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,245,250,0.7)); border:1px dashed rgba(160,120,140,0.12);
@@ -90,7 +87,6 @@ header{
 footer{margin-top:20px; display:flex; align-items:center; justify-content:space-between; color:var(--muted); font-size:13px}
 
 
-/* --- SEÇÃO DE SELEÇÃO DE FILMES (AJUSTES RESPONSIVOS) --- */
 .banner-wrapper {
   display: flex;
   flex-direction: column;
@@ -152,16 +148,11 @@ footer{margin-top:20px; display:flex; align-items:center; justify-content:space-
   
   header{
     gap:10px;
-    padding-right: 100px; /* Adapta o espaço vazio para telas menores */
+    padding-right: 0; /* Remove o espaçamento extra, já que o carimbo será oculto */
   }
   
-  /* Ajuste do carimbo para telas menores */
+  /* Oculta o carimbo em telas menores para evitar a quebra de layout */
   .stamp {
-    top: 5px;
-    right: 5px;
-  }
-  .stamp::after {
-    font-size: 10px;
-    padding: 5px 8px;
+    display: none;
   }
 }
